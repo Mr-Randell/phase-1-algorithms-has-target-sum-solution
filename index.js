@@ -1,17 +1,56 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
+  // iterate over the array of numbers
+  for (let i = 0; i < array.length; i++) {
+    // for the current number, identify a complementary number that adds to our target
+    // (for example: if our number is 2, and the target is 5, the complementary number is 3)
+    const complement = target - array[i];
+    // iterate over the remaining numbers in the array
+    for (let j = i + 1; j < array.length; j++) {
+      // check if any of the remaining numbers is the complement
+      // if so, return true
+      if (array[j] === complement) return true;
+    }
+  }
+  // if we reach the end of the array, return false
+  return false;
 }
 
 /* 
   Write the Big O time complexity of your function here
+  1 step
+  const seenNumbers = {};
+  for (const number of array) {
+    n steps
+    const complement = target - number;
+    n steps
+    if (seenNumbers[complement]) return true;
+    n steps
+    seenNumbers[number] = true;
+  }
+  1 step
+  return false;
+
+  Space complexity: O(n)
+  Time complexity: O(n)
 */
 
 /* 
   Add your pseudocode here
+  iterate over the array of numbers
+  for the current number, identify a complementary number that adds to our target
+  (for example: if our number is 2, and the target is 5, the complementary number is 3)
+  iterate over the remaining numbers in the array
+    check if any of the remaining numbers is the complement
+      if so, return true
+  if we reach the end of the array, return false
 */
 
 /*
   Add written explanation of your solution here
+  checks if two numbers in an array add up to some target number
+  if array is [1,2,3,4] and target number is 6
+  2 and 4 add up to 6, so return true
 */
 
 // You can run `node index.js` to view these console logs
